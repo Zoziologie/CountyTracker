@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -30,11 +31,9 @@ module.exports = {
   plugins: [
         new webpack.ProvidePlugin({
             mapboxgl: 'mapbox-gl'
+        }),
+        new HtmlWebpackPlugin({
+          template: 'src/index.html'
         })
-    ],
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'dist'),
-          },
-    }
+    ]
 };
